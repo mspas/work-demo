@@ -1,0 +1,15 @@
+$slate-800: #1d293d;
+
+.sidenav-wrapper {
+  --mat-sidenav-container-width: 16rem;
+  --mat-sidenav-container-background-color: #{$slate-800};
+  --mat-sidenav-container-shape: 0;
+}
+
+.sidenav-toggle-button {
+  --mat-button-text-icon-spacing: 0;
+
+  .mat-icon {
+    color: $slate-800;
+  }
+}

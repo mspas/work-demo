@@ -1,0 +1,19 @@
+<mat-drawer-container class="h-screen w-screen">
+  <mat-drawer #drawer class="w-64 bg-blue-800 text-white p-4 sidenav-wrapper" mode="side" opened>
+    <app-sidenav />
+  </mat-drawer>
+
+  <mat-drawer-content class="flex flex-col h-full">
+    <header class="h-14 bg-slate-50 text-slate-800 flex items-center px-4 gap-4">
+      <button matButton (click)="drawer.toggle()" class="sidenav-toggle-button">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <h2 class="text-xl">Demo</h2>
+    </header>
+
+    <main class="flex-1 p-6 bg-slate-100 overflow-auto h-[calc(100%-3.5rem)]">
+      <router-outlet />
+    </main>
+  </mat-drawer-content>
+</mat-drawer-container>

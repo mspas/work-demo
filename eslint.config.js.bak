@@ -1,0 +1,49 @@
+// backup of original eslint.config.js
+// this file was renamed to avoid ESLint loading a flat config that requires
+// packages not present in devDependencies and causing the ESLint server to fail.
+// Keep this file as a reference. To re-enable the flat config, rename it back
+// to `eslint.config.js` after ensuring required packages are installed.
+// Original content follows:
+// @ts-check
+const eslint = require("@eslint/js");
+const tseslint = require("typescript-eslint");
+const angular = require("angular-eslint");
+
+module.exports = tseslint.config(
+  {
+    files: ["**/*.ts"],
+    extends: [
+      eslint.configs.recommended,
+      ...tseslint.configs.recommended,
+      ...tseslint.configs.stylistic,
+      ...angular.configs.tsRecommended,
+    ],
+    processor: angular.processInlineTemplates,
+    rules: {
+      "@angular-eslint/directive-selector": [
+        "error",
+        {
+          type: "attribute",
+          prefix: "app",
+          style: "camelCase",
+        },
+      ],
+      "@angular-eslint/component-selector": [
+        "error",
+        {
+          type: "element",
+          prefix: "app",
+          style: "kebab-case",
+        },
+      ],
+    },
+  },
+  {
+    files: ["**/*.html"],
+    extends: [
+      ...angular.configs.templateRecommended,
+      ...angular.configs.templateAccessibility,
+    ],
+    rules: {},
+  }
+);

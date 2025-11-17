@@ -1,0 +1,22 @@
+{
+  // Use Prettier as the default formatter and enable format on save
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+
+  // Let ESLint fix problems on save (this will run ESLint's --fix)
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // Validate common file types with ESLint
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html"
+  ],
+
+  // Ensure the workspace uses npm as package manager for ESLint
+  "eslint.packageManager": "npm"
+}

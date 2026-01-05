@@ -10,6 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
   imports: [RouterOutlet, SidenavComponent, MatSidenavModule, MatButtonModule, MatIconModule],
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
+  standalone: true,
 })
 export class LayoutComponent {
   isExpanded = true;

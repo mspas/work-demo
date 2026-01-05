@@ -1,0 +1,16 @@
+table.stock-list {
+  td {
+    --mat-table-row-item-outline-color: #e2e8f0;
+  }
+
+  th {
+    --mat-table-row-item-outline-color: #cad5e2;
+
+    mat-icon {
+      height: 18px;
+      width: 18px;
+      font-size: 18px;
+      color: oklch(82.8% 0.189 84.429);
+    }
+  }
+}

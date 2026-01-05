@@ -1,0 +1,86 @@
+<div class="max-w-full overflow-x-auto">
+  <table mat-table [dataSource]="stocks" class="stock-list min-w-[1000px] table-auto">
+    <!-- Flaga -->
+    <ng-container matColumnDef="flag">
+      <th mat-header-cell *matHeaderCellDef class="px-2 py-1"></th>
+      <td mat-cell *matCellDef="let stock" class="px-2 py-1">
+        <img
+          class="w-6 h-4 inline"
+          [src]="'https://flagcdn.com/' + stock.countryCode.toLowerCase() + '.svg'"
+          [alt]="stock.country"
+        />
+      </td>
+    </ng-container>
+
+    <!-- Symbol -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef class="px-2 py-1 whitespace-nowrap">Symbol</th>
+      <td mat-cell *matCellDef="let stock" class="px-2 py-1 whitespace-nowrap">
+        <a
+          [routerLink]="stock.symbol"
+          class="text-blue-900 hover:text-blue-600 underline cursor-pointer"
+        >
+          {{ stock.symbol }}
+        </a>
+      </td>
+    </ng-container>
+
+    <!-- Name -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef class="px-2 py-1 whitespace-nowrap">Name</th>
+      <td mat-cell *matCellDef="let stock" class="px-2 py-1 whitespace-nowrap">
+        {{ stock.name }}
+      </td>
+    </ng-container>
+
+    <!-- Exchange -->
+    <ng-container matColumnDef="exchange">
+      <th mat-header-cell *matHeaderCellDef class="px-2 py-1 whitespace-nowrap">Exchange</th>
+      <td mat-cell *matCellDef="let stock" class="px-2 py-1 whitespace-nowrap">
+        {{ stock.exchange }}
+      </td>
+    </ng-container>
+
+    <!-- Sector -->
+    <ng-container matColumnDef="sector">
+      <th mat-header-cell *matHeaderCellDef class="px-2 py-1 whitespace-nowrap">Sector</th>
+      <td mat-cell *matCellDef="let stock" class="px-2 py-1 whitespace-nowrap">
+        {{ stock.sector }}
+      </td>
+    </ng-container>
+
+    <!-- Price -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef class="px-2 py-1 whitespace-nowrap">
+        <div class="flex gap-2">
+          Price <mat-icon [matTooltip]="'Mocked data for demo purposes'">warning</mat-icon>
+        </div>
+      </th>
+      <td mat-cell *matCellDef="let stock" class="px-2 py-1 whitespace-nowrap">
+        ${{ stock.price }}
+      </td>
+    </ng-container>
+
+    <!-- Change -->
+    <ng-container matColumnDef="change">
+      <th mat-header-cell *matHeaderCellDef class="px-2 py-1 whitespace-nowrap">
+        <div class="flex gap-2">
+          Change <mat-icon [matTooltip]="'Mocked data for demo purposes'">warning</mat-icon>
+        </div>
+      </th>
+      <td
+        mat-cell
+        *matCellDef="let stock"
+        class="px-2 py-1 whitespace-nowrap font-medium"
+        [ngClass]="stock.trend === 'up' ? 'text-green-600' : 'text-red-600'"
+      >
+        {{ stock.changePercent }}%
+        <span *ngIf="stock.trend === 'up'">▲</span>
+        <span *ngIf="stock.trend === 'down'">▼</span>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="bg-gray-100"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
